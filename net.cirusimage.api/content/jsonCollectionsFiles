@@ -1,0 +1,17 @@
+<?php header('Content-type: text/json');
+
+$url = IMG_URL . $_GET['gallery'] . '/';
+$url2 = IMG_IMG . $_GET['gallery'] . '/';
+$dir = IMG_DIR . $_GET['gallery'];
+
+foreach (new DirectoryIterator($dir) as $copy) {
+    if($copy->isDot()) continue;
+        $collection[] = json_decode('["' . $url . $copy->getFilename() . '","' . $url2 . str_replace('.jpg','.thumbnail.jpg',$copy->getFilename()) . '"]');
+}
+
+if (isset($_GET['callback'])) {
+    echo $_GET['callback'] . '(' . json_encode($collection) . ');';
+} else {
+    echo json_encode($collection);
+}
+exit;

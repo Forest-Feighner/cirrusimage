@@ -1,0 +1,42 @@
+<?php  error_reporting(E_ALL);     //echo '<pre>'; print_r($_GET); echo '</pre>';
+
+if (!isset($_GET['context'])) $_GET['context'] = null;
+if (isset($_GET['gallery']) && isset($_GET['image'])) {
+    $imageResource = dirname(__FILE__) . '/' . $_GET['gallery'] . '/' .  $_GET['image'];
+    $imageRelativeResource = $_GET['gallery'] . '/' .  $_GET['image'];
+}
+switch ($_GET['context']) {
+    case 'xhtml':
+    break;
+    case 'xhtmlCollections':
+    break;
+    case 'xhtmlCollectionsFiles':
+    break;
+    case 'jsonCollections':
+    break;
+    case 'jsonCollectionsFiles':
+    break;
+    case 'json':
+    break;
+    case 'thumbnail':
+    break;
+    case 'base64':
+        header('Content-type: application/base64');
+        echo base64_encode(exif_thumbnail($imageResource, $width, $height, $type));
+        exit;
+    break;
+    default:
+        $title = 'api.cirrusimage.net';
+        $dc_title = 'api.cirrusimage.net';
+        $dc_description = 'The image repository for tw3k.net';
+        $description = 'The image repository for tw3k.net';
+        $keywords = 'API, tw3k.net, image, exif, json, jsonp';
+    break;
+}
+
+        $title = 'api.cirrusimage.net';
+        $dc_title = 'api.cirrusimage.net';
+        $dc_description = 'The image repository for tw3k.net';
+        $description = 'The image repository for tw3k.net';
+        $keywords = 'API, tw3k.net, image, exif, json, jsonp';
+

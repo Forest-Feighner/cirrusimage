@@ -1,0 +1,51 @@
+<?php  if(!isset($_GET['gallery'])) exit; //header('Content-type: application/xhtml+xml');
+/**
+ *
+ * @todo populate with exif data
+ */
+
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><?php echo $title?></title>
+        <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="home" href="http://tw3k.net" title="tw3k.net" />
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+        <meta name="ICBM" content="42.26370, -84.55470" />
+        <meta name="DC.title" content="<?php echo $dc_title?>" />
+        <meta name="DC.description" content="<?php echo $dc_description?>" />
+        <meta name="DC.publisher" content="tw3k" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Language" content="en" />
+        <meta name="ROBOTS" content="ALL" />
+        <meta name="Copyright" content="Copyright (c) 2010, Forest Dean Feighner ~tw3k" />
+        <meta name="author" content="Forest Dean Feighner ~tw3k" />
+        <meta name="description" content="<?php echo $description?>" />
+        <meta name="keywords" content="<?php echo $keywords?>" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+     </head>
+    <body>
+<?php
+
+/**
+ *
+ * @todo create function with exif data
+ */
+
+echo '<h1>' . $title . '.</h1><ul>';
+$url = IMG_URL . $_GET['gallery'] . '/';
+$url2 = IMG_IMG . $_GET['gallery'] . '/';
+$dir = IMG_DIR . str_replace('.','', $_GET['gallery']);
+foreach (new DirectoryIterator($dir) as $copy) {
+    if($copy->isDot()) continue;
+        echo '
+            <li><a href="' . $url . $copy->getFilename() . '" title=""><img alt="" src="' . $url2  . str_replace('.jpg','.thumbnail.jpg',$copy->getFilename()) . '" /></a></li>
+            ';
+}
+
+echo '</ul>
+   </body>
+</html>
+';
+exit;

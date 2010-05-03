@@ -1,0 +1,9 @@
+<?php
+
+$txt = '<ul>' . PHP_EOL;
+foreach (new DirectoryIterator(IMG_DIR) as $copy) {
+    if($copy->isDot() || $copy->isFile()) continue;
+        $txt .= '    <li><a href="' . IMG_API . 'collections/' . $copy->getBasename() . '.html">' . $copy->getBasename() . '</a></li>' . PHP_EOL;
+}
+echo $txt . '</ul>';
+exit;

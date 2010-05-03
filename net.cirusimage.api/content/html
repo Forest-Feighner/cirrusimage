@@ -1,0 +1,25 @@
+<?php
+
+if(!isset($_GET['image'])) exit;
+$imageXMP = exec('exiftool -fast -s -s -s  -ImageDescription ' . $imageResource);
+$imageXMP_DC = preg_replace('/(\.)(\w*): (\w+|\d+\.\w+|\d+)/', '$1***$2: $3', $imageXMP);
+$imageXMP_DC = explode('***', $imageXMP_DC);
+array_shift($imageXMP_DC);
+$image = exif_thumbnail($imageResource, $width, $height, $type);
+$exif_data = exif_read_data($imageResource);
+$txt = '<div id="' . str_replace('.jpg','',basename($imageResource)) . '">
+    <a href="' . IMG_URL . $_GET['gallery'] . '/' .  $_GET['image'] . '" title ="' . htmlentities($exif_data['ImageDescription'], ENT_QUOTES) . '">
+        <img alt="' . $exif_data['ImageDescription'] . '" title="' . htmlentities($exif_data['ImageDescription'], ENT_QUOTES) . '" width="' . $width . '" height="' . $height . '" src="' . IMG_IMG .  str_replace('.jpg','.thumbnail.jpg', $imageRelativeResource) . '" />
+    </a><br />
+    <ul>';
+        if (isset($imageXMP_DC[0]))
+            $txt .= '
+        <li>' . $imageXMP_DC[0] . '</li>
+        <li>' . $imageXMP_DC[1] . '</li>
+        <li>' . $imageXMP_DC[2] . '</li>
+        <li>' . $imageXMP_DC[3] . '</li>
+        <li>' . $imageXMP_DC[4] . '</li>
+    </ul>
+</div>';
+echo $txt;
+exit;

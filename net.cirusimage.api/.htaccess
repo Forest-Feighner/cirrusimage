@@ -1,0 +1,45 @@
+php_value arg_separator.output &amp;
+
+    php_value zlib.output_compression 2048
+    php_value zlib.output_compression_level 6
+
+<Files ~ "\.(php|htm|html|css|js)$">
+    AddDefaultCharset UTF-8
+    DefaultLanguage en-US
+</Files>
+
+Options Indexes FollowSymLinks 
+<IfModule rewrite_module>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteRule  ^$ /index.php?context=index	[L]
+
+    #RewriteRule  ^image/(.*)$  http://api.cirrusimage.net/image/$1	[R,L]
+
+
+    RewriteRule  ^collections.html$ /indexRest.php?context=htmlCollections	[L]
+    RewriteRule  ^collections.xhtml$ /indexRest.php?context=xhtmlCollections	[L]
+    RewriteRule  ^collections.json$ /indexRest.php?context=jsonCollections	[QSA,L]
+    RewriteRule  ^collections/(.*).xhtml$ /indexRest.php?context=xhtmlCollectionsFiles&gallery=$1	[L]
+    RewriteRule  ^collections/(.*).html$ /indexRest.php?context=htmlCollectionsFiles&gallery=$1	[L]
+    RewriteRule  ^collections/(.*).json$ /indexRest.php?context=jsonCollectionsFiles&gallery=$1	[QSA,L]
+
+    RewriteRule  (.*)/(.*).xhtml$ /indexRest.php?context=xhtml&gallery=$1&image=$2.jpg	[L]
+    RewriteRule  (.*)/(.*).html$ /indexRest.php?context=html&gallery=$1&image=$2.jpg	[L]
+
+    RewriteRule  ^(.*)/(.*).json$ /indexRest.php?context=json&gallery=$1&image=$2.jpg	[QSA,L]
+    RewriteRule  ^(.*)/(.*).thumbnail.jpg$ /indexRest.php?context=thumbnail&gallery=$1&image=$2.jpg	[L]
+    RewriteRule  ^(.*)/(.*).base64$ /indexRest.php?context=base64&gallery=$1&image=$2.jpg	[L]
+
+    RewriteRule  ^(.*)/(.*).json$ /img.php?context=json&gallery=$1&image=$2.jpg	[QSA,L]
+    RewriteRule  ^(.*)/(.*).thumbnail.jpg$ /img.php?context=thumbnail&gallery=$1&image=$2.jpg	[L]
+    RewriteRule  ^(.*)/(.*).base64$ /img.php?context=base64&gallery=$1&image=$2.jpg	[L]
+
+</IfModule>
+
+ErrorDocument 400 /index.php?context=error&error=400
+ErrorDocument 401 /index.php?context=error&error=401
+ErrorDocument 403 /index.php?context=error&error=403
+ErrorDocument 404 /index.php?context=error&error=404
+ErrorDocument 410 /index.php?context=error&error=410

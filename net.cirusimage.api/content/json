@@ -1,0 +1,14 @@
+<?php header('Content-type: text/json');
+
+$imageXMP = exec('exiftool -fast -s -s -s  -ImageDescription ' . $imageResource);
+$imageXMP_DC = preg_replace('/(\.)(\w*): (\w+|\d+\.\w+|\d+)/', '$1***$2: $3', $imageXMP);
+$imageXMP_DC = explode('***', $imageXMP_DC);
+array_shift($imageXMP_DC);
+$imageXMP_DC[] = 'Image: ' . IMG_IMG . str_replace('/Forest/img/','', $imageResource);
+if (isset($_GET['callback'])) {
+    echo $_GET['callback'] . '(' . json_encode($imageXMP_DC) . ');';
+} else {
+    echo json_encode($imageXMP_DC);
+}
+//echo '<pre>'; print_r($imageXMP_DC); echo '</pre>';
+exit;

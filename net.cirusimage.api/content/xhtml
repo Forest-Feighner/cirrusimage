@@ -1,0 +1,57 @@
+<?php  if(!isset($_GET['image'])) exit; //header('Content-type: application/xhtml+xml');
+/**
+ *
+ * @todo populate with exif data
+ */
+
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><?php echo $title?></title>
+        <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="home" href="http://tw3k.net" title="tw3k.net" />
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+        <meta name="ICBM" content="42.26370, -84.55470" />
+        <meta name="DC.title" content="<?php echo $dc_title?>" />
+        <meta name="DC.description" content="<?php echo $dc_description?>" />
+        <meta name="DC.publisher" content="tw3k" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Language" content="en" />
+        <meta name="ROBOTS" content="ALL" />
+        <meta name="Copyright" content="Copyright (c) 2010, Forest Dean Feighner ~tw3k" />
+        <meta name="author" content="Forest Dean Feighner ~tw3k" />
+        <meta name="description" content="<?php echo $description?>" />
+        <meta name="keywords" content="<?php echo $keywords?>" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+     </head>
+    <body>
+<?php
+
+$imageXMP = exec('exiftool -fast -s -s -s  -ImageDescription ' . $imageResource);
+$imageXMP_DC = preg_replace('/(\.)(\w*): (\w+|\d+\.\w+|\d+)/', '$1***$2: $3', $imageXMP);
+$imageXMP_DC = explode('***', $imageXMP_DC);
+array_shift($imageXMP_DC);
+$image = exif_thumbnail($imageResource, $width, $height, $type);
+$exif_data = exif_read_data($imageResource);
+$txt = '<div id="' . str_replace('.jpg','',basename($imageResource)) . '">
+    <a href="' . IMG_URL . $_GET['gallery'] . '/' .  $_GET['image'] . '" title ="' . htmlentities($exif_data['ImageDescription'], ENT_QUOTES) . '">
+        <img alt="' . htmlentities($exif_data['ImageDescription'], ENT_QUOTES) . '" title="' . htmlentities($exif_data['ImageDescription'], ENT_QUOTES) . '" width="' . $width . '" height="' . $height . '" src="' . IMG_IMG .  str_replace('.jpg','.thumbnail.jpg', $imageRelativeResource) . '" />
+    </a><br />
+    <ul>';
+        if (isset($imageXMP_DC[0]))
+            $txt .= '
+        <li>' . htmlentities($imageXMP_DC[0], ENT_QUOTES) . '</li>
+        <li>' . htmlentities($imageXMP_DC[1], ENT_QUOTES) . '</li>
+        <li>' . htmlentities($imageXMP_DC[2], ENT_QUOTES) . '</li>
+        <li>' . htmlentities($imageXMP_DC[3], ENT_QUOTES) . '</li>
+        <li>' . htmlentities($imageXMP_DC[4], ENT_QUOTES) . '</li>
+    </ul>
+</div>';
+echo $txt;
+
+echo '
+   </body>
+</html>
+';
+exit;

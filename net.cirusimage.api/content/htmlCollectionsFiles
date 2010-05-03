@@ -1,0 +1,21 @@
+<?php
+
+/**
+ *
+ * @todo create function with exif data
+ */
+
+echo '<ul>';
+$url = IMG_URL . $_GET['gallery'] . '/';
+$url2 = IMG_IMG . $_GET['gallery'] . '/';
+$dir = IMG_DIR . $_GET['gallery'];
+foreach (new DirectoryIterator($dir) as $copy) {
+    if($copy->isDot()) continue;
+        echo '
+            <li><a href="' . $url . $copy->getFilename() . '" title=""><img alt="" src="' . $url2  . str_replace('.jpg','.thumbnail.jpg',$copy->getFilename()) . '" /></a></li>
+            ';
+}
+
+echo '</ul>
+';
+exit;

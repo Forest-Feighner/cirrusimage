@@ -1,0 +1,10 @@
+<div id="code-changes"></div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#code-changes').rssfeed('http://code.google.com/feeds/p/cirrusimage/svnchanges/basic', {
+    limit: 5
+  });
+});
+</script>
