@@ -22,22 +22,21 @@ require_once getcwd() . '/content/meta';
         <meta name="description" content="<?php echo $description?>" />
         <meta name="keywords" content="<?php echo $keywords?>" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <link type="text/css" href="http://jqueryui.tw3k.net/css/jquery-ui-tw3k.css" rel="stylesheet" />
-        <link type="text/css" href="http://jqueryui.tw3k.net/css/custom-theme/jquery-ui-1.8.custom.css" rel="stylesheet" />
-        <script type="text/javascript" src="http://jqueryui.tw3k.net/js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="http://jqueryui.tw3k.net/js/jquery-ui-1.8.custom.min.js"></script>
-        <script type="text/javascript" src="http://jqueryui.tw3k.net/js/jquery-ui-tw3k.js"></script>
-        <link type="text/css" href="http://jqueryui.tw3k.net/css/jquery.zrssfeed.css" rel="stylesheet" />
-        <script type="text/javascript" src="http://jqueryui.tw3k.net/js/jquery.zrssfeed.min.js"></script>
-        <script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"> </script>
+        <link type="text/css" href="http://jqueryui-0.tw3k.com/css/jquery-ui-bird.css" rel="stylesheet" />
+        <link type="text/css" href="http://jqueryui-1.tw3k.com/css/custom-theme/jquery-ui-1.8.custom.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="http://jqueryui-1.tw3k.com/js/jquery-ui-1.8.custom.min.js"></script>
+        <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery-ui-bird.js"></script>
+        <link type="text/css" href="http://jqueryui-1.tw3k.com/css/jquery.zrssfeed.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery.zrssfeed.min.js"></script>
     </head>
     <body>
-        <div id="switcher"></div> <div id="Logo" style="top:-6px;left:1px;width:183px;height:66px; background: transparent url('http://cirrusimage.net/img/cirrusImage-logo.png') center center no-repeat;" onclick="location.href='http://cirrusimage.net'"></div>
+        <div id="Logo" style="top:-6px;left:1px;width:183px;height:66px; background: transparent url('http://cirrusimage.net/img/cirrusImage-logo.png') center center no-repeat;" onclick="location.href='http://cirrusimage.net'"></div>
         <ul class="ui-menu" style="float:right">
-            <li class="ui-menu-item"><a href='http://cirrusimage.net' title='cirrusImage'>cirrusimage.net</a> : </li>
-            <li class="ui-menu-item"><a href='http://gallery.cirrusimage.net' title='Gallery'>gallery.cirrusimage.net</a> : </li>
-            <li class="ui-menu-item"><a href='http://apps.cirrusimage.net' title='Google Apps, GMail and Documents'>apps.cirrusimage.net</a> : </li>
-            <li class="ui-menu-item-hit"><a href='http://api.cirrusimage.net' title='API dot cirrusimage dot net'>api.cirrusimage.net</a></li>
+            <li class="ui-menu-item"><a href='http://cirrusimage.net' title='cirrusImage'>cirrusImage</a></li>
+            <li class="ui-menu-item"><a href='http://gallery.cirrusimage.net' title='Gallery'>Gallery</a></li>
+            <li class="ui-menu-item"><a href='http://apps.cirrusimage.net' title='Google Apps, GMail and Documents'>GApps</a></li>
+            <li class="ui-menu-item-hit"><a href='http://api.cirrusimage.net' title='API dot cirrusimage dot net'>API</a></li>
         </ul>
         <div class="content">
 <?php //echo '<pre>'; print_r($_ENV); echo '</pre>';

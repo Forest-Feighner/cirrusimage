@@ -1,4 +1,12 @@
 <?php header('Content-type: text/json');
+header('Cache-Control: public, max-age=31636000');
+ // calc an offset of 24 hours
+ $offset = 3600 * 9200;
+ // calc the string in GMT not localtime and add the offset
+ $expire = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
+ //output the HTTP header
+ Header($expire);
+
 
 $url = IMG_URL . $_GET['gallery'] . '/';
 $url2 = IMG_IMG . $_GET['gallery'] . '/';
