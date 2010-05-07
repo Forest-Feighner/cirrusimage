@@ -31,6 +31,7 @@ Options Indexes FollowSymLinks
     RewriteBase /
 
     RewriteRule  ^$ /index.php?context=index	[L]
+    RewriteRule  ^docs/$ /docs/index.html	[L]
 
     RewriteRule  ^collections.html$ /indexRest.php?context=htmlCollections	[L]
     RewriteRule  ^collections.xhtml$ /indexRest.php?context=xhtmlCollections	[L]

@@ -1,4 +1,52 @@
 <?php
+/**
+ * index file
+ *
+ * cirrusImage :: website index
+ *
+ * PHP 5
+ *
+ * LICENSE:
+ *
+ * Copyright (c) 2010, Forest Feighner
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ *  - Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *  - Neither the name of the cirrusImage nor the names of its contributors may
+ *    be used to endorse or promote products derived from this software without
+ *    specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. *
+ *
+ * @package   cirrusImage
+ * @author    Forest Feighner <forest@cirrusimage.net>
+ * @copyright 2010 Forest Feighner
+ * @license   http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @version   svn revision: $Id:$
+ * @version   svn revision: $Date:$
+ * @version   svn revision: $Rev:$
+ * @link      http://cirrusImage.net
+ * @link      http://api.cirrusImage.net
+ * @since     0.1
+ * @filesource
+ * @todo      general clean up and recoding
+ */
 
 require_once getcwd() . '/content/meta';
 
@@ -22,21 +70,22 @@ require_once getcwd() . '/content/meta';
         <meta name="description" content="<?php echo $description?>" />
         <meta name="keywords" content="<?php echo $keywords?>" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <link type="text/css" href="http://jqueryui-0.tw3k.com/css/jquery-ui-bird.css" rel="stylesheet" />
         <link type="text/css" href="http://jqueryui-1.tw3k.com/css/custom-theme/jquery-ui-1.8.custom.css" rel="stylesheet" />
+        <link type="text/css" href="http://jqueryui-0.tw3k.com/css/jquery-ui-cirrus.css" rel="stylesheet" />
         <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="http://jqueryui-1.tw3k.com/js/jquery-ui-1.8.custom.min.js"></script>
-        <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery-ui-bird.js"></script>
+        <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery-ui-cirrus.js"></script>
         <link type="text/css" href="http://jqueryui-1.tw3k.com/css/jquery.zrssfeed.css" rel="stylesheet" />
         <script type="text/javascript" src="http://jqueryui-0.tw3k.com/js/jquery.zrssfeed.min.js"></script>
     </head>
     <body>
-        <div id="Logo" style="top:-6px;left:1px;width:183px;height:66px; background: transparent url('http://cirrusimage.net/img/cirrusImage-logo.png') center center no-repeat;" onclick="location.href='http://cirrusimage.net'"></div>
+        <div id="Logo" style="top:-6px;left:1px;width:183px;height:66px;" onclick="location.href='http://cirrusimage.net'"></div>
         <ul class="ui-menu" style="float:right">
             <li class="ui-menu-item"><a href='http://cirrusimage.net' title='cirrusImage'>cirrusImage</a></li>
             <li class="ui-menu-item"><a href='http://gallery.cirrusimage.net' title='Gallery'>Gallery</a></li>
             <li class="ui-menu-item"><a href='http://apps.cirrusimage.net' title='Google Apps, GMail and Documents'>GApps</a></li>
-            <li class="ui-menu-item-hit"><a href='http://api.cirrusimage.net' title='API dot cirrusimage dot net'>API</a></li>
+            <li class="ui-menu-item-hit"><a href='http://api.cirrusimage.net' title='cirrusImage API'>API</a></li>
+            <li class="ui-menu-item"><a href='http://api.cirrusimage.net/docs/' title='cirrusImage PHP Documentation'>Docs</a></li>
         </ul>
         <div class="content">
 <?php //echo '<pre>'; print_r($_ENV); echo '</pre>';
@@ -68,8 +117,8 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 </script>
 <script type="text/javascript">
 try {
-var pageTracker = _gat._getTracker("UA-7650077-1");
-pageTracker._setDomainName(".tw3k.net");
+var pageTracker = _gat._getTracker("UA-16248236-1");
+pageTracker._setDomainName(".cirrusimage.net");
 pageTracker._trackPageview();
 } catch(err) {}</script>
     </body>
